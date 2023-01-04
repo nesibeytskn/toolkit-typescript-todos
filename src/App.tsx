@@ -21,23 +21,31 @@ function App() {
       dispatch(toggleCompleted(id))
   }
   return (
-    <div className="App">
+    <div className="App ">
+      <div className="container p-2">
+        <div className="col-md-4 mx-auto">
+
+        <h1 className="">TODO'S</h1>
       <input
+      
         name="title"
         value={title}
         onChange={(e) => setTitle(e.currentTarget.value)}
       />
 
-      <button onClick={onSave}>Save</button>
-      <ul>
+      <button className="btn  btn-success " onClick={onSave}>Save</button>
+      <ul className="list-unstyled">
         {todos.map((todo) => (
-          <li key={todo.id}>
-            <button onClick={()=>toggle(todo.id)}>{todo.completed ? "Uncompleted" : "Mark Completed"}</button>
-            <button onClick={() => onDelete(todo.id)}>Delete</button>
-           <span>{todo.title}</span> 
+          <li  key={todo.id}>
+             <span className="form-control  gy-2">{todo.title}</span> 
+            <button className="btn btn-primary me-2 my-2 " onClick={()=>toggle(todo.id)}>{todo.completed ? "Uncompleted" : "Mark Completed"}</button>
+            <button className="btn btn-danger" onClick={() => onDelete(todo.id)}>Delete</button>
+          
             </li>
         ))}
       </ul>
+      </div>
+      </div>
     </div>
   );
 }
